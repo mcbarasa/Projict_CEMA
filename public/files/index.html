@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Health Program</title>
+</head>
+<body>
+    <header>
+   <nav>
+    <div class="logo">
+        <a href="#">CEMA</a>
+    </div>
+        <div class="links">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Programs</a></li>
+            <li><a href="#">Clients</a></li>
+            <li><a href="#">Contact Us</a></li>
+        </ul>
+    </div>
+   </nav> 
+</header>
+<section>
+<div class="home">
+    <section class="home-intro">
+        <div class="container">
+          <h1>Welcome to CEMA</h1>
+          <p>
+            CEMA is a modern Health Information System designed to simplify client registration, program tracking, and patient care.
+            We support health programs such as TB, HIV, and Malaria with easy-to-use tools for healthcare professionals.
+          </p>
+          <div class="features">
+            <div class="feature-card">
+              <h3>📋 Register Clients</h3>
+              <p>Easily register new patients into the system with essential health information.</p>
+            </div>
+            <div class="feature-card">
+              <h3>🩺 Manage Health Programs</h3>
+              <p>Create and manage health programs like TB, HIV, and Malaria for better tracking.</p>
+            </div>
+            <div class="feature-card">
+              <h3>🔍 Search & View Profiles</h3>
+              <p>Quickly search for patients and view their enrollment history and profile.</p>
+            </div>
+          </div>
+          <a href="#" class="cta-button">Get Started</a>
+        </div>
+      </section>
+      
+</div>
+<div class="programs">
+    <section class="programs-section">
+        <div class="container">
+          <h1>Our Health Programs</h1>
+          <p class="section-description">
+            At CEMA, we offer comprehensive health programs to support our community’s well-being. Below are some of the key programs available for enrollment.
+          </p>
+      
+          <div class="programs-grid">
+            <div class="program-card">
+              <h3>🧫 TB Program</h3>
+              <p>Diagnosis, treatment, and follow-up services for Tuberculosis patients.</p>
+            </div>
+            <div class="program-card">
+              <h3>🦠 HIV Care</h3>
+              <p>Ongoing support and medication tracking for HIV-positive individuals.</p>
+            </div>
+            <div class="program-card">
+              <h3>🦟 Malaria Control</h3>
+              <p>Prevention, screening, and management of malaria infections.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+</div>
+<div class="contact">
+    @extends('layouts.app')
+
+    @section('content')
+    <section class="clients-page">
+      <div class="container">
+        <h1>Registered Clients</h1>
+        <p>Below is a list of all clients currently enrolled in the system.</p>
+    
+        <div class="clients-table-wrapper">
+          <table class="clients-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Full Name</th>
+                <th>Gender</th>
+                <th>Date of Birth</th>
+                <th>Programs Enrolled</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach ($clients as $index => $client)
+                <tr>
+                  <td>{{ $index + 1 }}</td>
+                  <td>{{ $client->name }}</td>
+                  <td>{{ $client->gender }}</td>
+                  <td>{{ $client->dob }}</td>
+                  <td>
+                    @foreach ($client->programs as $program)
+                      <span class="badge">{{ $program->name }}</span>
+                    @endforeach
+                  </td>
+                  <td><a href="{{ route('clients.show', $client->id) }}" class="view-btn">View</a></td>
+                </tr>
+              @endforeach
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+    @endsection
+</div>
+</section>
+<footer class="health-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section about">
+          <h3>Health Programs</h3>
+          <p>Empowering lives through quality healthcare. Join our fight against TB, HIV, and Malaria.</p>
+        </div>
+        <div class="footer-section links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#">Clients</a></li>
+            <li><a href="#">Programs</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-section contact">
+          <h4>Contacts</h4>
+          <p>Email: info@healthprogram.org</p>
+          <p>Phone: +254768943521</p>
+          <div class="socials">
+            <a href="https://web.facebook.com/?_rdc=1&_rdr#"><i class="fab fa-facebook"></i></a>
+            <a href="https://x.com/"><i class="fab fa-twitter"></i></a>
+            <a href="https://ke.linkedin.com/"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2025 Health Program System. All Rights Reserved.
+      </div>
+    </div>
+  </footer>  
+</body>
+</html>
